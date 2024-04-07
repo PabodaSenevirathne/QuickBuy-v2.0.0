@@ -11,7 +11,7 @@ import ProductDetail from './pages/ProductDetail';
 import { products } from './utils/ProductInfo';
 import OrderSummary from './pages/OrderSummary';
 import PaymentForm from './pages/PaymentForm';
-import { Navigate } from 'react-router-dom';
+import Login from './pages/Login';
 
 function App() {
   // Define the state
@@ -76,6 +76,7 @@ function App() {
           <Route path="/order-summary" element={<OrderSummary handleProceedToPayment={handleProceedToPayment} />} />
           <Route path="/payment" element={<PaymentForm />} />
           <Route path="/products/:id" element={<ProductDetail products={products} addToCart={addToCart} cartItems={cartItems}/>} /> 
+          <Route  path="/login" element={<Login/>} />
         </Routes>
         </div>
         <Footer />
