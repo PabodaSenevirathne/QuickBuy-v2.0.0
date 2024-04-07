@@ -55,7 +55,7 @@ const ProductDetail = ({ addToCart, cartItems }) => {
               />
               {contextHolder}
               <button onClick={handleAddToCart} className="view-details-button">
-                {cartItems.findIndex((cartItem) => cartItem.id === product.id) !== -1
+                {cartItems.findIndex((cartItem) => cartItem.id === product.productId) !== -1
                   ? 'Update Cart'
                   : 'Add to Cart'}
               </button>

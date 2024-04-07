@@ -9,6 +9,7 @@ import Account from './pages/Account';
 import AboutUs from './pages/AboutUs';
 import ProductDetail from './pages/ProductDetail';
 import { products } from './utils/ProductInfo';
+import OrderSummary from './pages/OrderSummary';
 
 function App() {
   // Define the state
@@ -18,17 +19,20 @@ function App() {
   // Add item to cart
   const addToCart = (item) => {
 
-    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.id);
+    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.productId);
     console.log(existingItemIndex);
+    console.log("Existing item index:", existingItemIndex);
 
     if (existingItemIndex !== -1) {
       // If item already exists, update the quantity
       const updatedCartItems = [...cartItems];
       updatedCartItems[existingItemIndex].quantity += item.quantity;
       setCartItems(updatedCartItems);
+      console.log("Cart items after update:", updatedCartItems);
   } else {
       // If item does not exist, add item to the cart
       setCartItems(prevCartItems => [...prevCartItems, item]);
+      console.log("Cart items after addition:", [...cartItems, item]);
   }
   };
 
@@ -59,6 +63,7 @@ function App() {
           <Route path="/cart" element={<ShoppingCart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity}/>} />
           <Route path="/account" element={<Account />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/order-summary" element={<OrderSummary />} />
           <Route path="/products/:id" element={<ProductDetail products={products} addToCart={addToCart} cartItems={cartItems}/>} /> 
         </Routes>
         </div>
