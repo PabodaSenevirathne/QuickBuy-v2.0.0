@@ -1,0 +1,16 @@
+.header {
+  background-color: #000A14;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo img {
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,62 @@
+.cards {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.product {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 30%;
+  margin: 0 10px;
+  background-color: #CDAB7A;
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.product p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.product input {
+  width: 50px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.product button {
+  background-color: #402220;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.product button:hover {
+  background-color: #CD924A;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: #666;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.row {
+  --bs-gutter-x: 0;
+}
