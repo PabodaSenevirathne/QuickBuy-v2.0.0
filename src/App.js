@@ -20,8 +20,7 @@ function App() {
 
 
   const handleProceedToPayment = () => {
-    // Handle logic to proceed to payment page
-    // For example, set orderSubmitted to true
+
     setOrderSubmitted(true);
   };
 
