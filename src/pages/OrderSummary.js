@@ -1,7 +1,7 @@
 // OrderSummary.js
 import React from 'react';
 
-const OrderSummary = ({ cartItems, totalValue }) => {
+const OrderSummary = ({ cartItems, totalValue, handleProceedToPayment }) => {
   return (
     <div>
       <h2>Order Summary</h2>
@@ -16,6 +16,7 @@ const OrderSummary = ({ cartItems, totalValue }) => {
         ))}
       </ul>
       <p>Total Value: ${totalValue.toFixed(2)}</p>
+      <button onClick={handleProceedToPayment}>Proceed to Payment</button>
     </div>
   );
 };
