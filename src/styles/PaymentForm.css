@@ -1,0 +1,41 @@
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #CDAB7A;
+    border-radius: 10px;
+  }
+  
+  .payment-form label {
+    margin-bottom: 10px;
+    color: #402220;
+  }
+  
+  .payment-form input[type="text"],
+  .payment-form input[type="email"],
+  .payment-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .payment-form button {
+    padding: 10px 20px;
+    background-color: #402220;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .payment-form button:hover {
+    background-color: #845745;
+  }
+  

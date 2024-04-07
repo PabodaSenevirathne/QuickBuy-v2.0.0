@@ -10,10 +10,20 @@ import AboutUs from './pages/AboutUs';
 import ProductDetail from './pages/ProductDetail';
 import { products } from './utils/ProductInfo';
 import OrderSummary from './pages/OrderSummary';
+import PaymentForm from './pages/PaymentForm';
+import { Navigate } from 'react-router-dom';
 
 function App() {
   // Define the state
   const [cartItems, setCartItems] = useState([]);
+  const [orderSubmitted, setOrderSubmitted] = useState(false);
+
+
+  const handleProceedToPayment = () => {
+    // Handle logic to proceed to payment page
+    // For example, set orderSubmitted to true
+    setOrderSubmitted(true);
+  };
 
 
   // Add item to cart
@@ -63,7 +73,8 @@ function App() {
           <Route path="/cart" element={<ShoppingCart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity}/>} />
           <Route path="/account" element={<Account />} />
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/order-summary" element={<OrderSummary />} />
+          <Route path="/order-summary" element={<OrderSummary handleProceedToPayment={handleProceedToPayment} />} />
+          <Route path="/payment" element={<PaymentForm />} />
           <Route path="/products/:id" element={<ProductDetail products={products} addToCart={addToCart} cartItems={cartItems}/>} /> 
         </Routes>
         </div>
