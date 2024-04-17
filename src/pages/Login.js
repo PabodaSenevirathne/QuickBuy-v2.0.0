@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 import { message } from 'antd';
+import axios from 'axios';
 
 function Login() {
   const [messageApi, contextHolder] = message.useMessage();
@@ -21,21 +22,67 @@ function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(formData);
+  //   if (formData.email === '' || formData.password === '') {
+  //     messageApi.info('Please fill all the fields to continue!');
+  //   } else {
+  //     // alert(`Login successful!`);
+  //     messageApi.info('Login successful!');
+  //     setFormData({
+  //       email: '',
+  //       password: '',
+  //     });
+  //     setRedirecting(true);
+  //   }
+  // };
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(formData);
+  //   if (formData.email === '' || formData.password === '') {
+  //     messageApi.info('Please fill all the fields to continue!');
+  //   } else {
+  //     try {
+  //       const response = await axios.post('http://localhost:5001/login', formData);
+  //       console.log(response.data); // Log the response from the backend
+  //       messageApi.success('Login successful!');
+  //       // Redirect to dashboard or any other page upon successful login
+  //       navigate('/dashboard');
+  //     } catch (error) {
+  //       console.error(error);
+  //       messageApi.error('Invalid credentials!');
+  //     }
+  //   }
+  // };
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
     if (formData.email === '' || formData.password === '') {
       messageApi.info('Please fill all the fields to continue!');
     } else {
-      // alert(`Login successful!`);
-      messageApi.info('Login successful!');
-      setFormData({
-        email: '',
-        password: '',
-      });
-      setRedirecting(true);
+      try {
+        // Send login credentials to the server
+        const response = await axios.post('http://localhost:5001/api/users/login', formData);
+        // Extract JWT from the response
+        const token = response.data.token;
+        // Store the token securely (e.g., in local storage)
+        localStorage.setItem('token', token);
+        // Inform user about successful login
+        messageApi.success('Login successful!');
+        // Redirect to dashboard or any other page upon successful login
+        navigate('/');
+      } catch (error) {
+        console.error(error);
+        messageApi.error('Invalid credentials!');
+      }
     }
   };
+
+
 
   return (
     <div className="login-container">

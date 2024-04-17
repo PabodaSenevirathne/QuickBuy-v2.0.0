@@ -12,6 +12,7 @@ import { products } from './utils/ProductInfo';
 import OrderSummary from './pages/OrderSummary';
 import PaymentForm from './pages/PaymentForm';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   // Define the state
@@ -76,6 +77,7 @@ function App() {
           <Route path="/payment" element={<PaymentForm />} />
           <Route path="/products/:id" element={<ProductDetail products={products} addToCart={addToCart} cartItems={cartItems}/>} /> 
           <Route  path="/login" element={<Login/>} />
+          <Route  path="/register" element={<Register/>} />
         </Routes>
         </div>
         <Footer />
