@@ -87,7 +87,8 @@ function App() {
             <Route path="/account" element={<Account />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/order-summary" element={<OrderSummary handleProceedToPayment={handleProceedToPayment} />} />
-            <Route path="/payment" element={<PaymentForm />} />
+            <Route path="/payment" element={<PaymentForm cartItems={cartItems} />} />
+
             <Route path="/products/:id" element={<ProductDetail products={products} addToCart={addToCart} cartItems={cartItems}/>} /> 
             <Route  path="/login" element={<Login/>} />
             <Route  path="/register" element={<Register/>} />

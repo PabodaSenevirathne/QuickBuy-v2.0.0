@@ -1,25 +1,57 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { jwtDecode as jwt_decode } from 'jwt-decode';
+
 import '../styles/PaymentForm.css';
 
-const PaymentForm = ({ handlePayment }) => {
-  // State variables to capture user and credit card information
+const PaymentForm = ({ handlePayment, cartItems }) => {
+  // State variables to capture user information
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [cvv, setCvv] = useState('');
 
   // Handle submission of payment information
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Validate user and credit card information
-    // If validation passes, call handlePayment function
-    // Pass both user and credit card information to the handlePayment function
+    // Validate user information
     const paymentData = {
-      user: { name, email },
-      card: { cardNumber, expiryDate, cvv }
+      userId: getUserIdFromToken(), // Function to get userId from token
+      products: cartItems.map(item => item.productId),
+      quantities: cartItems.map(item => item.quantity),
+      totalAmount: calculateTotalAmount(cartItems),
+      orderDate: new Date().toISOString()
     };
-    handlePayment(paymentData);
+
+    try {
+      // Save the order data to the backend
+      const res = await axios.post('http://localhost:5001/api/orders', paymentData);
+      console.log(res.data); // Assuming the response contains the saved order data
+      // Optionally, you can handle success response (e.g., show success message)
+    } catch (err) {
+      console.error(err.response.data); // Log error response from the server
+      // Optionally, you can handle error response (e.g., show error message)
+    }
+
+    // Call handlePayment function (if needed)
+    //handlePayment(paymentData);
+  };
+
+  // Function to calculate total amount
+  const calculateTotalAmount = (cartItems) => {
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  // Function to get userId from token (dummy implementation, replace with actual logic)
+  const getUserIdFromToken = () => {
+    // Implement logic to extract userId from JWT token
+    // For example, if the token is stored in localStorage:
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwt_decode(token);
+      return decodedToken.userId;
+    } else {
+      // Handle case where token is not found
+      return null;
+    }
   };
 
   return (
@@ -32,13 +64,6 @@ const PaymentForm = ({ handlePayment }) => {
           <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          {/* Input fields for credit card information */}
-          <label htmlFor="cardNumber">Card Number:</label>
-          <input type="text" id="cardNumber" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} required />
-          <label htmlFor="expiryDate">Expiry Date:</label>
-          <input type="text" id="expiryDate" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} required />
-          <label htmlFor="cvv">CVV:</label>
-          <input type="text" id="cvv" value={cvv} onChange={(e) => setCvv(e.target.value)} required />
           {/* Button to submit payment information */}
           <button type="submit">Submit Payment</button>
         </form>
@@ -48,54 +73,3 @@ const PaymentForm = ({ handlePayment }) => {
 };
 
 export default PaymentForm;
-
-
-
-// // PaymentForm.js
-// import React, { useState } from 'react';
-
-// const PaymentForm = ({ handlePayment }) => {
-//   // State variables to capture user and credit card information
-//   const [name, setName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [cardNumber, setCardNumber] = useState('');
-//   const [expiryDate, setExpiryDate] = useState('');
-//   const [cvv, setCvv] = useState('');
-
-//   // Handle submission of payment information
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     // Validate user and credit card information
-//     // If validation passes, call handlePayment function
-//     // Pass both user and credit card information to the handlePayment function
-//     const paymentData = {
-//       user: { name, email },
-//       card: { cardNumber, expiryDate, cvv }
-//     };
-//     handlePayment(paymentData);
-//   };
-
-//   return (
-//     <div>
-//       <h2>Payment Information</h2>
-//       <form onSubmit={handleSubmit}>
-//         {/* Input fields for user information */}
-//         <label htmlFor="name">Name:</label>
-//         <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
-//         <label htmlFor="email">Email:</label>
-//         <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-//         {/* Input fields for credit card information */}
-//         <label htmlFor="cardNumber">Card Number:</label>
-//         <input type="text" id="cardNumber" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} required />
-//         <label htmlFor="expiryDate">Expiry Date:</label>
-//         <input type="text" id="expiryDate" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} required />
-//         <label htmlFor="cvv">CVV:</label>
-//         <input type="text" id="cvv" value={cvv} onChange={(e) => setCvv(e.target.value)} required />
-//         {/* Button to submit payment information */}
-//         <button type="submit">Submit Payment</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default PaymentForm;
