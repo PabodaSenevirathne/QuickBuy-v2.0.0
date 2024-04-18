@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -13,37 +13,50 @@ import OrderSummary from './pages/OrderSummary';
 import PaymentForm from './pages/PaymentForm';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Offers from './pages/Offers';
 
 function App() {
   // Define the state
   const [cartItems, setCartItems] = useState([]);
   const [orderSubmitted, setOrderSubmitted] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('token') ? true : false);
+  const [totalValue, setTotalValue] = useState(0); // Initialize totalValue state with 0
 
+  // Calculate total value based on cart items
+  const calculateTotalValue = () => {
+    let total = 0;
+    cartItems.forEach(item => {
+      total += item.price * item.quantity;
+    });
+    return total;
+  };
+
+  useEffect(() => {
+    // Update totalValue whenever cartItems change
+    setTotalValue(calculateTotalValue());
+  }, [cartItems]);
+
+  const handleLogout = () => {
+    // Clear the token from local storage
+    localStorage.removeItem('token');
+    // Update authentication state
+    setIsAuthenticated(false);
+  };
 
   const handleProceedToPayment = () => {
-
     setOrderSubmitted(true);
   };
 
-
   // Add item to cart
   const addToCart = (item) => {
-
     const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.productId);
-    console.log(existingItemIndex);
-    console.log("Existing item index:", existingItemIndex);
-
     if (existingItemIndex !== -1) {
-      // If item already exists, update the quantity
       const updatedCartItems = [...cartItems];
       updatedCartItems[existingItemIndex].quantity += item.quantity;
       setCartItems(updatedCartItems);
-      console.log("Cart items after update:", updatedCartItems);
-  } else {
-      // If item does not exist, add item to the cart
+    } else {
       setCartItems(prevCartItems => [...prevCartItems, item]);
-      console.log("Cart items after addition:", [...cartItems, item]);
-  }
+    }
   };
 
   // Remove items from cart
@@ -65,20 +78,21 @@ function App() {
   return (
     <Router>
       <div>
-      <Header />
-        <Navbar cartItems={cartItems} />
+        <Header />
+        <Navbar cartItems={cartItems} isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
         <div className="content">
-        <Routes>
-          <Route path="/" element={<Home addToCart={addToCart} products={products}/>} />
-          <Route path="/cart" element={<ShoppingCart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity}/>} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/order-summary" element={<OrderSummary handleProceedToPayment={handleProceedToPayment} />} />
-          <Route path="/payment" element={<PaymentForm />} />
-          <Route path="/products/:id" element={<ProductDetail products={products} addToCart={addToCart} cartItems={cartItems}/>} /> 
-          <Route  path="/login" element={<Login/>} />
-          <Route  path="/register" element={<Register/>} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home addToCart={addToCart} products={products}/>} />
+            <Route path="/cart" element={<ShoppingCart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity}/>} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/order-summary" element={<OrderSummary handleProceedToPayment={handleProceedToPayment} />} />
+            <Route path="/payment" element={<PaymentForm />} />
+            <Route path="/products/:id" element={<ProductDetail products={products} addToCart={addToCart} cartItems={cartItems}/>} /> 
+            <Route  path="/login" element={<Login/>} />
+            <Route  path="/register" element={<Register/>} />
+            <Route path="/offers" element={<Offers />} />
+          </Routes>
         </div>
         <Footer />
       </div>

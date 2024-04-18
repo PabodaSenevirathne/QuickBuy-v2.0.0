@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Navbar.css';
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 import { Badge } from 'antd';
+import '../styles/Navbar.css';
 
-function Navbar({ cartItems }) {
+function Navbar({ cartItems, isAuthenticated, handleLogout }) {
   // Calculate the total quantity of items in the cart
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -15,19 +15,30 @@ function Navbar({ cartItems }) {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/account">Account</Link>
-        </li>
-        <li>
           <Link to="/about-us">About Us</Link>
         </li>
         <li>
+          <Link to="/account">
+            Sign In
+          </Link>
+        </li>
+        <li>
+          {isAuthenticated ? (
+            <>
+              <Link to="/offers">Offers</Link>
+              <Link to="/logout" onClick={handleLogout}>Logout</Link>
+            </>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
+        </li>
+        <li>
           <Link to="/cart">
-            <Badge size="small" count={totalQuantity}> {/* Set the count to the totalQuantity */}
+            <Badge size="small" count={totalQuantity}>
               <ShoppingCartOutlined style={{ fontSize: '24px', color: '#fff' }} />
             </Badge>
           </Link>
         </li>
-
       </ul>
     </nav>
   );
