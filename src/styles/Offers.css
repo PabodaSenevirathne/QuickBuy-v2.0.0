@@ -1,20 +1,42 @@
+/* Offers.css */
+
+/* Center the heading */
+h2, p {
+  margin-top: 40px;
+  text-align: center;
+}
+
 .offer-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 20px;
-  }
-  
-  .offer-item {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
-  }
-  
-  .offer-item h3 {
-    margin-top: 0;
-  }
-  
-  .offer-item p {
-    margin: 10px 0;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.offer-item {
+  width: calc(33.33% - 20px); /* Adjust as needed */
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.offer-item img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.offer-details h3 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.offer-details p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.discount {
+  font-weight: bold;
+  color: #007bff;
+}

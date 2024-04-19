@@ -26,6 +26,7 @@ function Navbar({ cartItems, isAuthenticated, handleLogout }) {
           {isAuthenticated ? (
             <>
               <Link to="/offers">Offers</Link>
+              <Link style={{ marginLeft: '16px', marginRight: '16px' }} to="/my-orders">My Orders</Link>
               <Link to="/logout" onClick={handleLogout}>Logout</Link>
             </>
           ) : (
