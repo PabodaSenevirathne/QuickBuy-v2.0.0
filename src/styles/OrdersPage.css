@@ -1,4 +1,4 @@
-.order-summary {
+.order-page {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
@@ -9,43 +9,43 @@
   background-color: #f5f5f5;
 }
 
-.order-summary h2 {
+.order-page h2 {
   text-align: center;
   color: #333; 
   margin-bottom: 20px;
 }
 
-.order-summary table {
+.order-page table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.order-summary th,
-.order-summary td {
+.order-page th,
+.order-page td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #e0e0e0;
 }
 
-.order-summary th {
+.order-page th {
   background-color: #f0f0f0;
 }
 
-.order-summary tbody tr:hover {
+.order-page tbody tr:hover {
   background-color: #fafafa;
 }
 
-.order-summary ul {
+.order-page ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.order-summary ul li {
+.order-page ul li {
   margin-bottom: 5px;
 }
 
-.order-summary button.view-details-button {
+.order-page button.view-details-button {
   background-color: #089c1b; 
   color: #fff;
   border: none;
@@ -54,15 +54,15 @@
   cursor: pointer;
 }
 
-.order-summary button.view-details-button:hover {
+.order-page button.view-details-button:hover {
   background-color: #0056b3; 
 }
 
-.order-summary button.view-details-button:focus {
+.order-page button.view-details-button:focus {
   outline: none;
 }
 
-.order-summary .message {
+.order-page .message {
   text-align: center;
   color: #888;
   font-style: italic;

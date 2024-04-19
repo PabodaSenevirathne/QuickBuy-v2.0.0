@@ -25,7 +25,7 @@ const OrdersPage = () => {
   }, []);
 
   return (
-    <div className="order-summary"> {/* Apply the "order-summary" class */}
+    <div className="order-page"> {/* Apply the "order-page" class */}
       <h2>My Orders</h2>
       {orders.length === 0 ? (
         <p className='message'>No orders found</p>
@@ -112,7 +112,7 @@ export default OrdersPage;
 //   }, []);
 
 //   return (
-//     <div className="order-summary"> {/* Apply the "order-summary" class */}
+//     <div className="order-page"> {/* Apply the "order-page" class */}
 //       <h2>My Orders</h2>
 //       <ul>
 //         {orders.map((order, index) => (
