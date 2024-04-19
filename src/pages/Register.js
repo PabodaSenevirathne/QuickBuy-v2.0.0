@@ -29,6 +29,23 @@ const RegistrationForm = () => {
   //   }
   // }
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   // Check if passwords match
+  //   if (formData.password !== formData.confirmPassword) {
+  //     message.error('Password and confirm password do not match');
+  //     return;
+  //   }
+
+  //   try {
+  //     const response = await axios.post('http://localhost:5001/api/users/register', formData);
+  //     console.log(response.data);
+  //     message.success('User registered successfully');
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Check if passwords match
@@ -36,8 +53,16 @@ const RegistrationForm = () => {
       message.error('Password and confirm password do not match');
       return;
     }
-
+  
     try {
+      // Check if the email already exists
+      const checkEmailResponse = await axios.get(`http://localhost:5001/api/users/check-email?email=${formData.email}`);
+      if (checkEmailResponse.data.exists) {
+        message.error('Email address is already registered');
+        return;
+      }
+  
+      // If email doesn't exist, proceed with registration
       const response = await axios.post('http://localhost:5001/api/users/register', formData);
       console.log(response.data);
       message.success('User registered successfully');
@@ -45,6 +70,9 @@ const RegistrationForm = () => {
       console.error(error);
     }
   }
+  
+
+
 
 
 
