@@ -1,0 +1,62 @@
+/* OrdersPage.css */
+.order-summary {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #CDAB7A;
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #F8F8F8; /* Light gray background color */
+}
+
+.order-summary h2 {
+  text-align: center;
+  color: #333; /* Dark gray color */
+}
+
+.order-summary ul {
+  list-style: none;
+  padding: 0;
+}
+
+.order-summary li {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.order-summary h3 {
+  color: #007bff; /* Blue color */
+}
+
+.order-summary p {
+  margin: 5px 0;
+}
+
+.order-summary ul.products-list {
+  list-style: none;
+  padding: 0;
+}
+
+.order-summary ul.products-list li {
+  margin-top: 10px;
+}
+
+.order-summary button.view-details-button {
+  background-color: #007bff; /* Blue color */
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.order-summary button.view-details-button:hover {
+  background-color: #0056b3; /* Darker shade of blue */
+}
+
+.order-summary button.view-details-button:focus {
+  outline: none;
+}

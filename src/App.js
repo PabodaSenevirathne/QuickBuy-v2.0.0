@@ -14,6 +14,7 @@ import PaymentForm from './pages/PaymentForm';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Offers from './pages/Offers';
+import OrdersPage from './pages/OrdersPage'; 
 
 function App() {
   // Define the state
@@ -93,6 +94,7 @@ function App() {
             <Route  path="/login" element={<Login/>} />
             <Route  path="/register" element={<Register/>} />
             <Route path="/offers" element={<Offers />} />
+            <Route path="/my-orders" element={<OrdersPage />} />
           </Routes>
         </div>
         <Footer />
