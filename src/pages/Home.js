@@ -23,11 +23,32 @@ function Home() {
   return (
     <div>
       <CustomCarousel />
-      <h2 className="section-title">Best Sellers</h2>
+      {/* <h2 className="section-title">Best Sellers</h2>
       <div className="row">
         <div className="col">
           <section className="cards">
             {products.map((product) => (
+              <Product key={product.productId} product={product} />
+            ))}
+          </section>
+        </div>
+      </div> */}
+
+<h2 className="section-title">Best Sellers</h2>
+      <div className="row">
+        <div className="col">
+          <section className="cards">
+            {products.slice(0, 4).map((product) => (
+              <Product key={product.productId} product={product} />
+            ))}
+          </section>
+        </div>
+      </div>
+      <h2 className="section-title">New Arrivals</h2>
+      <div className="row">
+        <div className="col">
+          <section className="cards">
+            {products.slice(4).map((product) => (
               <Product key={product.productId} product={product} />
             ))}
           </section>
