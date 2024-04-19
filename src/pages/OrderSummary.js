@@ -1,11 +1,9 @@
-// OrderSummary.js
 import React from 'react';
 import { Link } from 'react-router-dom';
  
-
 const OrderSummary = ({ cartItems, totalValue }) => {
   return (
-    <div className="order-summary"> {/* Apply the "order-summary" class */}
+    <div className="order-summary">
       <h2>Order Summary</h2>
       <ul>
         {cartItems.map((item, index) => (

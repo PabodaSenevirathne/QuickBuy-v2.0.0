@@ -18,34 +18,6 @@ const RegistrationForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post('http://localhost:5001/api/users/register', formData);
-  //     console.log(response.data);
-  //     message.success('User registered successfully');
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   // Check if passwords match
-  //   if (formData.password !== formData.confirmPassword) {
-  //     message.error('Password and confirm password do not match');
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await axios.post('http://localhost:5001/api/users/register', formData);
-  //     console.log(response.data);
-  //     message.success('User registered successfully');
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Check if passwords match
@@ -70,16 +42,11 @@ const RegistrationForm = () => {
       console.error(error);
     }
   }
-  
-
-
-
-
 
   return (
-    <div className="registration-container"> {/* Apply the container class */}
-      <h1 className="registration-heading">Register</h1> {/* Apply the heading class */}
-      <form onSubmit={handleSubmit} className="registration-form"> {/* Apply the form class */}
+    <div className="registration-container">
+      <h1 className="registration-heading">Register</h1>
+      <form onSubmit={handleSubmit} className="registration-form">
         <div>
           <label>First Name</label>
           <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />

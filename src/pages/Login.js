@@ -33,11 +33,10 @@ function Login() {
         const response = await axios.post('http://localhost:5001/api/users/login', formData);
         // Extract JWT from the response
         const token = response.data.token;
-        // Store the token securely (e.g., in local storage)
+        // Store the token in local storage)
         localStorage.setItem('token', token);
         // Inform user about successful login
         messageApi.success('Login successful!');
-        // Redirect to dashboard or any other page upon successful login
         
         setTimeout(() => {
           navigate('/');
@@ -50,8 +49,6 @@ function Login() {
       }
     }
   };
-
-
 
   return (
     <div className="login-container">

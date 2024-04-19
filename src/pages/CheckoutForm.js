@@ -6,7 +6,6 @@ const CheckoutForm = ({ onSubmit }) => {
     name: '',
     email: '',
     address: '',
-    // Add more fields as needed
   });
 
   const handleChange = (e) => {
@@ -29,8 +28,6 @@ const CheckoutForm = ({ onSubmit }) => {
 
       <label htmlFor="address">Address:</label>
       <input type="text" id="address" name="address" value={formData.address} onChange={handleChange} />
-
-      {/* Add more form fields as needed */}
 
       <button type="submit">Proceed to Checkout</button>
     </form>
