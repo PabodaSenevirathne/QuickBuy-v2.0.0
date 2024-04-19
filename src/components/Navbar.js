@@ -18,7 +18,7 @@ function Navbar({ cartItems, isAuthenticated, handleLogout }) {
           <Link to="/about-us">About Us</Link>
         </li>
         <li>
-          <Link to="/account">
+          <Link to="/register">
             Sign In
           </Link>
         </li>

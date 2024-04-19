@@ -5,8 +5,8 @@
   padding: 20px;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   background-color: #f5f5f5; /* Light gray background color */
 }
 
@@ -61,6 +61,13 @@
 
 .order-summary button.view-details-button:focus {
   outline: none;
+}
+
+.order-summary .message {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  margin-top: 20px;
 }
 
 

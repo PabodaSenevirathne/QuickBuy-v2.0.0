@@ -1,9 +1,12 @@
 /* Offers.css */
 
 /* Center the heading */
-h2, p {
-  margin-top: 40px;
+p {
   text-align: center;
+}
+.title{
+  text-align: center;
+  margin-top: 50px;
 }
 
 .offer-list {

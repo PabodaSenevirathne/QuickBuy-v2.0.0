@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { jwtDecode as jwt_decode } from 'jwt-decode';
+import { message } from 'antd';
 
 import '../styles/PaymentForm.css';
 
@@ -26,6 +27,7 @@ const PaymentForm = ({ handlePayment, cartItems }) => {
       const res = await axios.post('http://localhost:5001/api/orders', paymentData);
       console.log(res.data); // Assuming the response contains the saved order data
       // Optionally, you can handle success response (e.g., show success message)
+      message.success('Order placed successfully!');
     } catch (err) {
       console.error(err.response.data); // Log error response from the server
       // Optionally, you can handle error response (e.g., show error message)

@@ -27,6 +27,9 @@ const OrdersPage = () => {
   return (
     <div className="order-summary"> {/* Apply the "order-summary" class */}
       <h2>My Orders</h2>
+      {orders.length === 0 ? (
+        <p className='message'>No orders found</p>
+      ) : (
       <table>
         <thead>
           <tr>
@@ -69,6 +72,7 @@ const OrdersPage = () => {
           ))}
         </tbody>
       </table>
+       )}
     </div>
   );
 };

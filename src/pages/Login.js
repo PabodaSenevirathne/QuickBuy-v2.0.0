@@ -74,7 +74,11 @@ function Login() {
         // Inform user about successful login
         messageApi.success('Login successful!');
         // Redirect to dashboard or any other page upon successful login
-        navigate('/');
+        
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);
+      
       } catch (error) {
         console.error(error);
         messageApi.error('Invalid credentials!');

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Register.css';
 import axios from 'axios';
+import { message } from 'antd'; 
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -17,15 +18,35 @@ const RegistrationForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post('http://localhost:5001/api/users/register', formData);
+  //     console.log(response.data);
+  //     message.success('User registered successfully');
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Check if passwords match
+    if (formData.password !== formData.confirmPassword) {
+      message.error('Password and confirm password do not match');
+      return;
+    }
+
     try {
       const response = await axios.post('http://localhost:5001/api/users/register', formData);
-      console.log(response.data); // Log the response from the backend
+      console.log(response.data);
+      message.success('User registered successfully');
     } catch (error) {
       console.error(error);
     }
   }
+
+
 
   return (
     <div className="registration-container"> {/* Apply the container class */}

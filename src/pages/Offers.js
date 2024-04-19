@@ -9,7 +9,7 @@ import offer3Image from '../images/p-7.jpg';
 function Offers() {
   return (
     <div>
-      <h2>Special Offers</h2>
+      <h2 className='title'>Special Offers</h2>
       <p>Check out our latest special offers and discounts below:</p>
       <div className="offer-list">
         <div className="offer-item">
