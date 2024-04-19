@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode as jwt_decode } from 'jwt-decode';
 import '../styles/OrdersPage.css';
 
 const OrdersPage = () => {
   const [orders, setOrders] = useState([]);
+  const isAuthenticated = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login'); 
+    }
+
     const fetchOrders = async () => {
       try {
         const token = localStorage.getItem('token'); // Retrieve the token from localStorage
@@ -22,7 +28,7 @@ const OrdersPage = () => {
     };
 
     fetchOrders();
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="order-page">

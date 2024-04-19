@@ -1,12 +1,21 @@
-// Offers.js
-
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import React from 'react';
-import '../styles/Offers.css'; // Import the CSS file
+import '../styles/Offers.css';
 import offer1Image from '../images/offer-1.jpg';
 import offer2Image from '../images/offer-2.jpg';
 import offer3Image from '../images/offer-3.jpg';
 
 function Offers() {
+  const isAuthenticated = localStorage.getItem('token');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+  }, [isAuthenticated, navigate]);
+
   return (
     <div>
       <h2 className='title'>Special Offers</h2>

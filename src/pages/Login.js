@@ -41,6 +41,7 @@ function Login() {
         
         setTimeout(() => {
           navigate('/');
+          window.location.reload();
         }, 1000);
       
       } catch (error) {
