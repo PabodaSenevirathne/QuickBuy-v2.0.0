@@ -1,9 +1,11 @@
-/* Offers.css */
-
-/* Center the heading */
 p {
   text-align: center;
 }
+
+.offer-name{
+  text-align: center;
+}
+
 .title{
   text-align: center;
   margin-top: 50px;
@@ -16,7 +18,7 @@ p {
 }
 
 .offer-item {
-  width: calc(33.33% - 20px); /* Adjust as needed */
+  width: calc(33.33% - 20px);
   margin-bottom: 20px;
   padding: 20px;
   border: 1px solid #ccc;

@@ -22,42 +22,6 @@ function Login() {
     });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(formData);
-  //   if (formData.email === '' || formData.password === '') {
-  //     messageApi.info('Please fill all the fields to continue!');
-  //   } else {
-  //     // alert(`Login successful!`);
-  //     messageApi.info('Login successful!');
-  //     setFormData({
-  //       email: '',
-  //       password: '',
-  //     });
-  //     setRedirecting(true);
-  //   }
-  // };
-
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log(formData);
-  //   if (formData.email === '' || formData.password === '') {
-  //     messageApi.info('Please fill all the fields to continue!');
-  //   } else {
-  //     try {
-  //       const response = await axios.post('http://localhost:5001/login', formData);
-  //       console.log(response.data); // Log the response from the backend
-  //       messageApi.success('Login successful!');
-  //       // Redirect to dashboard or any other page upon successful login
-  //       navigate('/dashboard');
-  //     } catch (error) {
-  //       console.error(error);
-  //       messageApi.error('Invalid credentials!');
-  //     }
-  //   }
-  // };
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);

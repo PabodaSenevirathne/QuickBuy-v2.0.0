@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import ShoppingCart from './pages/ShoppingCart';
@@ -17,11 +17,10 @@ import Offers from './pages/Offers';
 import OrdersPage from './pages/OrdersPage'; 
 
 function App() {
-  // Define the state
   const [cartItems, setCartItems] = useState([]);
   const [orderSubmitted, setOrderSubmitted] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('token') ? true : false);
-  const [totalValue, setTotalValue] = useState(0); // Initialize totalValue state with 0
+  const [totalValue, setTotalValue] = useState(0);
 
   // Calculate total value based on cart items
   const calculateTotalValue = () => {
@@ -33,15 +32,13 @@ function App() {
   };
 
   useEffect(() => {
-    // Update totalValue whenever cartItems change
     setTotalValue(calculateTotalValue());
   }, [cartItems]);
 
   const handleLogout = () => {
-    // Clear the token from local storage
     localStorage.removeItem('token');
-    // Update authentication state
     setIsAuthenticated(false);
+    window.location.href = '/';
   };
 
   const handleProceedToPayment = () => {
@@ -89,7 +86,6 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/order-summary" element={<OrderSummary handleProceedToPayment={handleProceedToPayment} />} />
             <Route path="/payment" element={<PaymentForm cartItems={cartItems} />} />
-
             <Route path="/products/:id" element={<ProductDetail products={products} addToCart={addToCart} cartItems={cartItems}/>} /> 
             <Route  path="/login" element={<Login/>} />
             <Route  path="/register" element={<Register/>} />
